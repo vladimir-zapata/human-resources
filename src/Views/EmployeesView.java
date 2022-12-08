@@ -83,7 +83,7 @@ public class EmployeesView extends javax.swing.JFrame {
         );
 
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel3.setText("Nuevo empleado");
+        jLabel3.setText("Administrar empleado");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
