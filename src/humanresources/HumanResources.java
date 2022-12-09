@@ -1,20 +1,36 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package humanresources;
 
-/**
- *
- * @author Dexter
- */
+import Controllers.LoginController;
+import Controllers.MenuController;
+import Models.Login;
+import Views.*;
+import Controllers.*;
+import Models.*;
+import com.formdev.flatlaf.FlatDarkLaf;
+import java.awt.Menu;
+import javax.swing.UIManager;
+
 public class HumanResources {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        try {
+            UIManager.setLookAndFeel(new FlatDarkLaf());
+        } catch (Exception e) {
+        }
+
+        Login login = new Login();
+        LoginView loginView = new LoginView();
+
+        Menu menu = new Menu();
+        MenuView menuView = new MenuView();
+        
+        Employee employee = new Employee();
+        EmployeesView employeesView = new EmployeesView();
+        
+        LoginController loginCtrl = new LoginController(loginView, login);
+        MenuController menuCtrl = new MenuController(menuView, menu);
+        EmployeeController employeeController = new EmployeeController(employee, employeesView);
+        
+        loginCtrl.show();
     }
-    
 }

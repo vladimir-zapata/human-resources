@@ -1,14 +1,47 @@
 package Controllers;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+import Views.*;
+import Controllers.*;
+import java.awt.Menu;
 
-/**
- *
- * @author Dexter
- */
-public class MenuController {
-    
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MenuController implements ActionListener {
+
+    private static MenuView menuView;
+    private Menu menu;
+
+    public MenuController(MenuView menuView, Menu menu) {
+        this.menuView = menuView;
+        this.menu = menu;
+        this.menuView.btnEmployees.addActionListener(this);
+        this.menuView.btnPayroll.addActionListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand() == "Empleados") {
+            hide();
+            Controllers.EmployeeController.show();
+
+        }
+
+        if (e.getActionCommand() == "Nómina") {
+            hide();
+            //Controllers.Payroll.show();
+        }
+    }
+
+    public static void show() {
+        menuView.setVisible(true);
+    }
+
+    public static void hide() {
+        menuView.dispose();
+    }
+
+    public static void logout() {
+        System.exit(0);
+    }
 }

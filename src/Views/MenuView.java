@@ -4,8 +4,7 @@
  */
 package Views;
 
-import com.formdev.flatlaf.FlatDarkLaf;
-import javax.swing.UIManager;
+import Controllers.*;
 
 /**
  *
@@ -34,9 +33,11 @@ public class MenuView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        menMaintenance = new javax.swing.JMenu();
-        menAbout = new javax.swing.JMenu();
-        menLogout = new javax.swing.JMenu();
+        menMain = new javax.swing.JMenu();
+        itemMaintenance = new javax.swing.JMenuItem();
+        itemAbout = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        itemLogout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menú");
@@ -104,14 +105,42 @@ public class MenuView extends javax.swing.JFrame {
                 .addContainerGap(85, Short.MAX_VALUE))
         );
 
-        menMaintenance.setText("Mantenimientos");
-        jMenuBar1.add(menMaintenance);
+        menMain.setText("Menu");
+        menMain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menMainActionPerformed(evt);
+            }
+        });
 
-        menAbout.setText("Acerca de");
-        jMenuBar1.add(menAbout);
+        itemMaintenance.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        itemMaintenance.setText("Mantenimientos");
+        itemMaintenance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemMaintenanceActionPerformed(evt);
+            }
+        });
+        menMain.add(itemMaintenance);
 
-        menLogout.setText("Cerrar sesión");
-        jMenuBar1.add(menLogout);
+        itemAbout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        itemAbout.setText("Acerca de");
+        itemAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAboutActionPerformed(evt);
+            }
+        });
+        menMain.add(itemAbout);
+        menMain.add(jSeparator1);
+
+        itemLogout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        itemLogout.setText("Cerrar sesion");
+        itemLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemLogoutActionPerformed(evt);
+            }
+        });
+        menMain.add(itemLogout);
+
+        jMenuBar1.add(menMain);
 
         setJMenuBar(jMenuBar1);
 
@@ -147,15 +176,27 @@ public class MenuView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPayrollActionPerformed
 
+    private void itemMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMaintenanceActionPerformed
+        System.out.println(evt);
+    }//GEN-LAST:event_itemMaintenanceActionPerformed
+
+    private void itemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAboutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemAboutActionPerformed
+
+    private void menMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menMainActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menMainActionPerformed
+
+    private void itemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLogoutActionPerformed
+        Controllers.MenuController.logout();
+    }//GEN-LAST:event_itemLogoutActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        try {
-            UIManager.setLookAndFeel(new FlatDarkLaf());
-        } catch (Exception e) {
-        }
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -167,13 +208,15 @@ public class MenuView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnEmployees;
     public javax.swing.JButton btnPayroll;
+    private javax.swing.JMenuItem itemAbout;
+    private javax.swing.JMenuItem itemLogout;
+    private javax.swing.JMenuItem itemMaintenance;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    public javax.swing.JMenu menAbout;
-    public javax.swing.JMenu menLogout;
-    public javax.swing.JMenu menMaintenance;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    public javax.swing.JMenu menMain;
     // End of variables declaration//GEN-END:variables
 }
