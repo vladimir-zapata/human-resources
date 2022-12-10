@@ -4,12 +4,12 @@ import Views.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PayrollController implements ActionListener {
+public class AboutController implements ActionListener {
 
-    private static PayrollView payrollView;
+    private static AboutView aboutView;
 
-    public PayrollController(PayrollView payrollView) {
-        this.payrollView = payrollView;
+    public AboutController(AboutView aboutView) {
+        this.aboutView = aboutView;
     }
 
     /**
@@ -22,11 +22,11 @@ public class PayrollController implements ActionListener {
     }
 
     public static void show() {
-        payrollView.setVisible(true);
+        aboutView.setVisible(true);
     }
 
     public static void hide() {
-        payrollView.dispose();
+        aboutView.dispose();
     }
 
     public static void logout() {
