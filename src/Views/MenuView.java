@@ -4,8 +4,6 @@
  */
 package Views;
 
-import Controllers.*;
-
 /**
  *
  * @author Dexter
@@ -40,7 +38,6 @@ public class MenuView extends javax.swing.JFrame {
         itemLogout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Menú");
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
@@ -173,15 +170,17 @@ public class MenuView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmployeesActionPerformed
 
     private void btnPayrollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayrollActionPerformed
-        // TODO add your handling code here:
+        Controllers.MenuController.hide();
+        Controllers.PayrollController.show();
     }//GEN-LAST:event_btnPayrollActionPerformed
 
     private void itemMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMaintenanceActionPerformed
-        System.out.println(evt);
+        
     }//GEN-LAST:event_itemMaintenanceActionPerformed
 
     private void itemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAboutActionPerformed
-        // TODO add your handling code here:
+        Controllers.MenuController.hide();
+        Controllers.AboutController.show();
     }//GEN-LAST:event_itemAboutActionPerformed
 
     private void menMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menMainActionPerformed

@@ -27,9 +27,14 @@ public class HumanResources {
         Employee employee = new Employee();
         EmployeesView employeesView = new EmployeesView();
         
+        AboutView aboutView = new AboutView();
+        PayrollView payrollView = new PayrollView();
+        
         LoginController loginCtrl = new LoginController(loginView, login);
-        MenuController menuCtrl = new MenuController(menuView, menu);
+        MenuController menuController = new MenuController(menuView, menu);
         EmployeeController employeeController = new EmployeeController(employee, employeesView);
+        AboutController aboutController = new AboutController(aboutView);
+        PayrollController payrollController = new PayrollController(payrollView);
         
         loginCtrl.show();
     }
