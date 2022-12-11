@@ -55,6 +55,10 @@ public class EmployeesView extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        btnAddEmployee = new javax.swing.JButton();
+        btnUpdateEmployee = new javax.swing.JButton();
+        btnDeleteEmployee = new javax.swing.JButton();
+        btnClean = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menMant = new javax.swing.JMenu();
         itemMant = new javax.swing.JMenuItem();
@@ -254,13 +258,59 @@ public class EmployeesView extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel2.setText("Acciones");
 
+        btnAddEmployee.setBackground(new java.awt.Color(84, 180, 53));
+        btnAddEmployee.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAddEmployee.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddEmployee.setText("Añadir");
+
+        btnUpdateEmployee.setBackground(new java.awt.Color(19, 99, 223));
+        btnUpdateEmployee.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnUpdateEmployee.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdateEmployee.setText("Actualizar");
+        btnUpdateEmployee.setEnabled(false);
+        btnUpdateEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateEmployeeActionPerformed(evt);
+            }
+        });
+
+        btnDeleteEmployee.setBackground(new java.awt.Color(218, 0, 55));
+        btnDeleteEmployee.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnDeleteEmployee.setForeground(new java.awt.Color(255, 255, 255));
+        btnDeleteEmployee.setText("Eliminar");
+        btnDeleteEmployee.setEnabled(false);
+        btnDeleteEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteEmployeeActionPerformed(evt);
+            }
+        });
+
+        btnClean.setBackground(new java.awt.Color(225, 77, 42));
+        btnClean.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnClean.setForeground(new java.awt.Color(255, 255, 255));
+        btnClean.setText("Limpiar");
+        btnClean.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCleanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator2)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnUpdateEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAddEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDeleteEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -269,7 +319,15 @@ public class EmployeesView extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(btnAddEmployee)
+                .addGap(18, 18, 18)
+                .addComponent(btnUpdateEmployee)
+                .addGap(18, 18, 18)
+                .addComponent(btnDeleteEmployee)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         menMant.setForeground(new java.awt.Color(255, 255, 255));
@@ -389,6 +447,18 @@ public class EmployeesView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_tblEmployeesMousePressed
 
+    private void btnUpdateEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEmployeeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateEmployeeActionPerformed
+
+    private void btnDeleteEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEmployeeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteEmployeeActionPerformed
+
+    private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCleanActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -403,6 +473,10 @@ public class EmployeesView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnAddEmployee;
+    public javax.swing.JButton btnClean;
+    public javax.swing.JButton btnDeleteEmployee;
+    public javax.swing.JButton btnUpdateEmployee;
     private javax.swing.JMenuItem itemAbout;
     private javax.swing.JMenuItem itemLogout;
     private javax.swing.JMenuItem itemMant;
