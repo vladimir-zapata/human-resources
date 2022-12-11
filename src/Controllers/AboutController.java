@@ -30,6 +30,7 @@ public class AboutController implements ActionListener {
     }
 
     public static void logout() {
-        System.exit(0);
+        aboutView.dispose();
+        Controllers.LoginController.show();
     }
 }

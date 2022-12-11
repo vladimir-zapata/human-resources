@@ -41,6 +41,7 @@ public class MenuController implements ActionListener {
     }
 
     public static void logout() {
-        System.exit(0);
+        menuView.dispose();
+        Controllers.LoginController.show();
     }
 }
