@@ -8,6 +8,7 @@ import humanresources.DBConnection;
 import java.sql.PreparedStatement;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class LoginController implements ActionListener {
@@ -17,6 +18,8 @@ public class LoginController implements ActionListener {
 
     DBConnection conn = new DBConnection();
     Connection cn;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
 
     public LoginController(LoginView loginView, Login login) throws InstantiationException, IllegalAccessException {
         this.cn = conn.getConn();
@@ -37,7 +40,6 @@ public class LoginController implements ActionListener {
             JOptionPane.showMessageDialog(loginView, "Usuario o contraseña incorrectos.");
 
         }
-
     }
 
     public static void show() {
@@ -79,16 +81,34 @@ public class LoginController implements ActionListener {
         int userFound = 0;
 
         try {
-            PreparedStatement ps = cn.prepareStatement(selectQuery);
+            ps = cn.prepareStatement(selectQuery);
 
             ps.setString(1, login.getUsername());
             ps.setString(2, login.getPassword());
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             rs.next();
 
             userFound = rs.getRow();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(loginView, e);
+            JOptionPane.showMessageDialog(loginView, "Ha ocurrido un error inesperado!\nContacte a su supervisor.");
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+
+                rs = null;
+            }
+
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+
+                ps = null;
+            }
         }
 
         return userFound;

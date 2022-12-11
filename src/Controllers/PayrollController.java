@@ -30,6 +30,7 @@ public class PayrollController implements ActionListener {
     }
 
     public static void logout() {
-        System.exit(0);
+        payrollView.dispose();
+        Controllers.LoginController.show();
     }
 }
