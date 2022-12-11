@@ -23,6 +23,7 @@ public class MenuController implements ActionListener {
         if (e.getActionCommand() == "Empleados") {
             hide();
             Controllers.EmployeeController.show();
+            Controllers.EmployeeController.clean();
 
         }
 
