@@ -2,30 +2,22 @@ package Controllers;
 
 import Models.Login;
 import Views.*;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import humanresources.DBConnection;
-import java.sql.PreparedStatement;
+import Services.LoginService;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class LoginController implements ActionListener {
 
     private static LoginView loginView;
     private static Login login;
-
-    DBConnection conn = new DBConnection();
-    Connection cn;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
+    private LoginService service;
 
     public LoginController(LoginView loginView, Login login) throws InstantiationException, IllegalAccessException {
-        this.cn = conn.getConn();
         this.loginView = loginView;
         this.login = login;
         this.loginView.btnLogin.addActionListener(this);
+        this.service = new LoginService(login, loginView);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -33,7 +25,7 @@ public class LoginController implements ActionListener {
             return;
         }
 
-        if (verifyUser() == 1) {
+        if (service.verifyUser()== 1) {
             hide();
             Controllers.MenuController.show();
         } else {
@@ -72,46 +64,7 @@ public class LoginController implements ActionListener {
             JOptionPane.showMessageDialog(loginView, "Campos vacios!\nIngrese un usuario y contraseña validos.");
             return false;
         }
-
+        
         return true;
     }
-
-    public int verifyUser() {
-        String selectQuery = "SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?";
-        int userFound = 0;
-
-        try {
-            ps = cn.prepareStatement(selectQuery);
-
-            ps.setString(1, login.getUsername());
-            ps.setString(2, login.getPassword());
-            rs = ps.executeQuery();
-            rs.next();
-
-            userFound = rs.getRow();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(loginView, "Ha ocurrido un error inesperado!\nContacte a su supervisor.");
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                }
-
-                rs = null;
-            }
-
-            if (ps != null) {
-                try {
-                    ps.close();
-                } catch (SQLException e) {
-                }
-
-                ps = null;
-            }
-        }
-
-        return userFound;
-    }
-
 }
