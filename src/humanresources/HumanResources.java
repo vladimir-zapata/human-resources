@@ -1,5 +1,7 @@
 package humanresources;
 
+import humanresources.DBConnection;
+
 import Controllers.LoginController;
 import Controllers.MenuController;
 import Models.Login;
@@ -10,9 +12,12 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Menu;
 import javax.swing.UIManager;
 
-public class HumanResources {
+import java.sql.Connection;
 
-    public static void main(String[] args) {
+public class HumanResources {
+    Connection cn;
+
+    public static void main(String[] args) throws InstantiationException, IllegalAccessException {
         try {
             UIManager.setLookAndFeel(new FlatDarkLaf());
         } catch (Exception e) {
@@ -36,6 +41,6 @@ public class HumanResources {
         AboutController aboutController = new AboutController(aboutView);
         PayrollController payrollController = new PayrollController(payrollView);
         
-        loginCtrl.show();
+        loginCtrl.show();        
     }
 }
