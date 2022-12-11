@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JOptionPane;
+
 public class EmployeeController implements MouseListener, ActionListener {
 
     private static EmployeesView employeesView;
@@ -19,13 +21,13 @@ public class EmployeeController implements MouseListener, ActionListener {
     public EmployeeController(Employee employee, EmployeesView employeesView) throws InstantiationException, IllegalAccessException {
         this.menu = menu;
         this.employeesView = employeesView;
-        
+
         employeesView.tblEmployees.addMouseListener(this);
         employeesView.btnAddEmployee.addActionListener(this);
         employeesView.btnUpdateEmployee.addActionListener(this);
         employeesView.btnDeleteEmployee.addActionListener(this);
         employeesView.btnClean.addActionListener(this);
-        
+
         this.service = new EmployeesService(employee, employeesView);
         service.getUsers();
     }
@@ -43,8 +45,14 @@ public class EmployeeController implements MouseListener, ActionListener {
         }
 
         if (e.getActionCommand() == "Eliminar") {
-            service.deleteEmployee();
-            service.getUsers();
+            int action = JOptionPane.showConfirmDialog(null, "Esta a punto de eliminar un registro!\nDesea continuar?");
+
+            if (action == 0) {
+                service.deleteEmployee();
+                service.getUsers();
+            } else {
+                JOptionPane.showMessageDialog(employeesView, "El registro no ha sido eliminado.");
+            }
         }
 
         if (e.getActionCommand() == "Limpiar") {

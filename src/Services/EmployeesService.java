@@ -19,7 +19,6 @@ public class EmployeesService {
     Connection cn = null;
 
     EmployeesView employeesView;
-    Employee employee;
 
     PreparedStatement ps = null;
     Statement stmt = null;
@@ -28,7 +27,6 @@ public class EmployeesService {
     public EmployeesService(Employee employee, EmployeesView employeeView) throws InstantiationException, IllegalAccessException {
         this.cn = conn.getConn();
         this.cn = cn;
-        this.employee = employee;
         this.employeesView = employeeView;
     }
 
