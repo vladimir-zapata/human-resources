@@ -12,10 +12,6 @@ public class AboutController implements ActionListener {
         this.aboutView = aboutView;
     }
 
-    /**
-     *
-     * @param e
-     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
