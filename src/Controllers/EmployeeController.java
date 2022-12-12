@@ -37,13 +37,11 @@ public class EmployeeController implements MouseListener, ActionListener {
         if (e.getActionCommand() == "Añadir") {
             service.addEmployee();
             service.getUsers();
-            clean();
         }
 
         if (e.getActionCommand() == "Actualizar") {
             service.updateEmployee();
             service.getUsers();
-            clean();
         }
 
         if (e.getActionCommand() == "Eliminar") {
