@@ -10,11 +10,9 @@ public class DBConnection {
 
     public Connection getConn() throws InstantiationException, IllegalAccessException {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/hr?"
-                    + "user=root&password=HHolaquetal**15");
+            conn = (Connection) DriverManager.getConnection("jdbc:sqlite:C:/temp/hr.db");
             System.out.println("Connected");
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (SQLException ex) {
             System.out.println("Connection failed");
         }
 

@@ -50,6 +50,7 @@ public class EmployeeController implements MouseListener, ActionListener {
             if (action == 0) {
                 service.deleteEmployee();
                 service.getUsers();
+                clean();
             } else {
                 JOptionPane.showMessageDialog(employeesView, "El registro no ha sido eliminado.");
             }
