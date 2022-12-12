@@ -37,11 +37,13 @@ public class EmployeeController implements MouseListener, ActionListener {
         if (e.getActionCommand() == "Añadir") {
             service.addEmployee();
             service.getUsers();
+            clean();
         }
 
         if (e.getActionCommand() == "Actualizar") {
             service.updateEmployee();
             service.getUsers();
+            clean();
         }
 
         if (e.getActionCommand() == "Eliminar") {
@@ -50,6 +52,7 @@ public class EmployeeController implements MouseListener, ActionListener {
             if (action == 0) {
                 service.deleteEmployee();
                 service.getUsers();
+                clean();
             } else {
                 JOptionPane.showMessageDialog(employeesView, "El registro no ha sido eliminado.");
             }

@@ -141,7 +141,7 @@ public class EmployeesService {
             ps.setString(2, employeesView.txtLastName.getText());
             ps.setString(3, employeesView.txtAddress.getText());
             ps.setString(4, employeesView.txtPhone.getText());
-            ps.setDate(5, java.sql.Date.valueOf(employeesView.txtHireDate.getText()));
+            ps.setString(5, employeesView.txtHireDate.getText());
             ps.setString(6, employeesView.txtJobTitle.getText());
             ps.setString(7, employeesView.txtDept.getText());
             ps.setInt(8, Integer.parseInt(employeesView.txtSal.getText()));
