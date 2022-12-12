@@ -19,6 +19,11 @@ public class PayrollController implements ActionListener, MouseListener {
         this.payroll = new Payroll();
 
         payrollView.btnBuscar.addActionListener(this);
+        payrollView.btnCalculatePayroll.addActionListener(this);
+        payrollView.btnConfirm.addActionListener(this);
+        payrollView.btnUpdate.addActionListener(this);
+        payrollView.btnDelete.addActionListener(this);
+        payrollView.btnClean.addActionListener(this);
         payrollView.tblPayroll.addMouseListener(this);
 
         this.service = new PayrollService(payroll, payrollView);
@@ -29,7 +34,21 @@ public class PayrollController implements ActionListener, MouseListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand() == "Buscar") {
-            System.out.println("Buscar");
+            boolean userFound = service.getUserById(payrollView.txtId.getText());
+
+            if (userFound) {
+                payrollView.btnBuscar.setEnabled(false);
+                payrollView.txtWorkedHours.setEnabled(true);
+                payrollView.txtExtraHours.setEnabled(true);
+                payrollView.txtAvance.setEnabled(true);
+                payrollView.btnCalculatePayroll.setEnabled(true);
+                payrollView.btnConfirm.setEnabled(true);
+                payrollView.btnDelete.setEnabled(true);
+            }
+        }
+
+        if (e.getActionCommand() == "Calcular Nomina") {
+            System.out.println("Calculando");
         }
 
         if (e.getActionCommand() == "Confirmar") {
@@ -45,7 +64,7 @@ public class PayrollController implements ActionListener, MouseListener {
         }
 
         if (e.getActionCommand() == "Limpiar") {
-            System.out.println("Clean");
+            clean();
         }
 
     }
@@ -82,5 +101,25 @@ public class PayrollController implements ActionListener, MouseListener {
     public static void logout() {
         payrollView.dispose();
         Controllers.LoginController.show();
+    }
+
+    private void clean() {
+        payrollView.btnBuscar.setEnabled(true);
+        payrollView.txtWorkedHours.setEnabled(false);
+        payrollView.txtExtraHours.setEnabled(false);
+        payrollView.txtAvance.setEnabled(false);
+        payrollView.btnCalculatePayroll.setEnabled(false);
+        payrollView.btnConfirm.setEnabled(false);
+        payrollView.btnDelete.setEnabled(false);
+
+        payrollView.txtId.setText("");
+        payrollView.txtWorkedHours.setText("");
+        payrollView.txtExtraHours.setText("");
+        payrollView.txtAvance.setText("");
+        payrollView.txtName.setText("");
+        payrollView.txtLastName.setText("");
+        payrollView.txtInsurance.setText("");
+        payrollView.txtAfp.setText("");
+        payrollView.txtNetSal.setText("");
     }
 }

@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 public class EmployeesService {
 
     DBConnection conn = new DBConnection();
-    Connection cn = null;
+    Connection cn;
 
     EmployeesView employeesView;
 
@@ -46,7 +46,8 @@ public class EmployeesService {
         employeesView.tblEmployees.setModel(tm);
 
         try {
-            Statement stmt = cn.createStatement();
+            this.stmt = cn.createStatement();
+            this.rs = stmt.executeQuery(selectQuery);
 
             ResultSet rs = stmt.executeQuery(selectQuery);
             String data[] = new String[10];
@@ -90,8 +91,8 @@ public class EmployeesService {
         int userFound = 0;
 
         try {
-            Statement stmt = cn.createStatement();
-            ResultSet rs = stmt.executeQuery(selectQuery);
+            this.stmt = cn.createStatement();
+            this.rs = stmt.executeQuery(selectQuery);
 
             rs.next();
             employeesView.txtID.setText(String.valueOf(rs.getInt("id")));
@@ -117,13 +118,13 @@ public class EmployeesService {
                 rs = null;
             }
 
-            if (ps != null) {
+            if (stmt != null) {
                 try {
-                    ps.close();
+                    stmt.close();
                 } catch (SQLException e) {
                 }
 
-                ps = null;
+                stmt = null;
             }
         }
 

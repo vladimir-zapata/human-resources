@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class PayrollService {
-
     DBConnection conn = new DBConnection();
     Connection cn = null;
 
@@ -95,12 +94,12 @@ public class PayrollService {
         int userFound = 0;
 
         try {
-             stmt = cn.createStatement();
-            
-             rs = stmt.executeQuery(selectQuery);
+            stmt = cn.createStatement();
+
+            rs = stmt.executeQuery(selectQuery);
 
             rs.next();
-            
+
             payrollView.txtId.setText(String.valueOf(rs.getInt("id")));
             payrollView.txtName.setText(rs.getString("nombre"));
             payrollView.txtLastName.setText(rs.getString("apellido"));
@@ -129,24 +128,22 @@ public class PayrollService {
 
         return userFound;
     }
-    
-        public int getUserById(String id) {
+
+    public boolean getUserById(String id) {
         String selectQuery = "SELECT * FROM empleados WHERE id = " + id;
-        int userFound = 0;
 
         try {
-            Statement stmt = cn.createStatement();
-            
-            ResultSet rs = stmt.executeQuery(selectQuery);
+            stmt = cn.createStatement();
+
+            rs = stmt.executeQuery(selectQuery);
 
             rs.next();
-            
+
             payrollView.txtId.setText(String.valueOf(rs.getInt("id")));
             payrollView.txtName.setText(String.valueOf(rs.getString("nombre")));
             payrollView.txtLastName.setText(String.valueOf(rs.getString("apellido")));
-            
-            userFound = 1;
-            
+
+            return true;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(payrollView, "Ha ocurrido un error al obtener los datos del empleado!\nContacte a su supervisor.");
         } finally {
@@ -169,6 +166,6 @@ public class PayrollService {
             }
         }
 
-        return userFound;
+        return true;
     }
 }
