@@ -8,8 +8,8 @@ public class AboutController implements ActionListener {
 
     private static AboutView aboutView;
 
-    public AboutController(AboutView aboutView) {
-        this.aboutView = aboutView;
+    public AboutController() {
+        this.aboutView = new AboutView();
     }
 
     @Override

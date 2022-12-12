@@ -13,14 +13,16 @@ import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 
 public class EmployeeController implements MouseListener, ActionListener {
-
+    
+    
     private static EmployeesView employeesView;
-    private Menu menu;
+    private Employee employee;
     private EmployeesService service;
 
-    public EmployeeController(Employee employee, EmployeesView employeesView) throws InstantiationException, IllegalAccessException {
-        this.menu = menu;
-        this.employeesView = employeesView;
+    public EmployeeController() throws InstantiationException, IllegalAccessException {
+        this.employeesView = new EmployeesView();
+        this.employee = new Employee();
+        this.service = new EmployeesService(employee, employeesView);
 
         employeesView.tblEmployees.addMouseListener(this);
         employeesView.btnAddEmployee.addActionListener(this);
@@ -28,7 +30,6 @@ public class EmployeeController implements MouseListener, ActionListener {
         employeesView.btnDeleteEmployee.addActionListener(this);
         employeesView.btnClean.addActionListener(this);
 
-        this.service = new EmployeesService(employee, employeesView);
         service.getUsers();
     }
 

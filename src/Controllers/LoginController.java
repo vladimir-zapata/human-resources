@@ -10,12 +10,12 @@ import javax.swing.JOptionPane;
 public class LoginController implements ActionListener {
 
     private static LoginView loginView;
-    private static Login login;
+    private Login login;
     private LoginService service;
 
-    public LoginController(LoginView loginView, Login login) throws InstantiationException, IllegalAccessException {
-        this.loginView = loginView;
-        this.login = login;
+    public LoginController() throws InstantiationException, IllegalAccessException {
+        this.loginView = new LoginView();
+        this.login = new Login();
         this.loginView.btnLogin.addActionListener(this);
         this.service = new LoginService(login, loginView);
     }

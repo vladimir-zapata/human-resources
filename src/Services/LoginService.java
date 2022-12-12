@@ -24,7 +24,6 @@ public class LoginService {
 
     public LoginService(Login login, LoginView loginView) throws InstantiationException, IllegalAccessException {
         this.cn = conn.getConn();
-        this.cn = cn;
         this.login = login;
         this.loginView = loginView;
     }
